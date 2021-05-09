@@ -1,4 +1,4 @@
-package kodlamaio.northwind.entities.concretes;
+package kodlamaio.northwind.entites.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,31 +8,26 @@ import javax.persistence.Table;
 
 import lombok.Data;
 @Entity
-@Data
 @Table(name="products")
+@Data
 public class Product {
-	
 	@Id
-	@GeneratedValue
-	@Column(name="product_id")
+    @GeneratedValue
+    @Column(name="product_id")
 	private int id;
-	
-	@Column(name="category_id")
+    
+    @Column(name="category_id")
 	private int categoryId;
-	
-	@Column(name="product_name")
+    
+    @Column(name="product_name")
 	private String productName;
-	
-	@Column(name="unit_price")
+    
+    @Column(name="unit_price")
 	private double unitPrice;
-	
-	@Column(name="units_in_stosk")
-	private short  unitsInStock;
-	
-	@Column(name="quantity_per_unit")
+    
+    @Column(name="units_in_stock")
+	private short unitsInStock;
+    
+    @Column(name="quantity_per_unit")
 	private String quantityPerUnit;
-	
-	
-		
-	
 }
