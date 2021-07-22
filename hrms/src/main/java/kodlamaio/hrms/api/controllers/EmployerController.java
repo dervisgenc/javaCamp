@@ -3,36 +3,38 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobTitleService;
+import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.JobTitle;
+import kodlamaio.hrms.entities.concretes.Employer;
 
 @RestController
-@RequestMapping("/api/jobtitles")
-public class JobTitlesController {
-	private JobTitleService jobTitleService;
+@RequestMapping("/api/employere")
+@CrossOrigin
+public class EmployerController {
+	
+	private EmployerService employerService;
 	
 	@Autowired
-	public JobTitlesController(JobTitleService jobTitleService) {
+	public EmployerController(EmployerService employereService) {
 		super();
-		this.jobTitleService = jobTitleService;
+		this.employerService = employereService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobTitle>> getAll(){
-		return this.jobTitleService.getAll();
+	DataResult<List<Employer>> getAll(){
+		return this.employerService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobTitle jobTitle) {
-		return this.jobTitleService.add(jobTitle);
+	Result add(@RequestBody Employer employere,String passwordRepeat) {
+		return this.employerService.add(employere,passwordRepeat);
 	}
 }
-

@@ -7,25 +7,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
-@Table(name="job_positions")
+@Table(name = "activation_codes")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class JobTitle {
+public class ActivationCode {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 	
-	@Column(name="name")
-	private String name;
 	
+	@Column(name = "user_id")
+	private int userId;
+	
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "is_verified")
+    private boolean isVerified;
 }
