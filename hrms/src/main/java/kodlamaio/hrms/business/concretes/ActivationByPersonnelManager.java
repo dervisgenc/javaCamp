@@ -28,7 +28,7 @@ public class ActivationByPersonnelManager implements ActivationByPersonnelServic
 		
 		activationByPersonnel.setEmployerId(employer.getId());
 		activationByPersonnel.setVerified(false);
-		activationByPersonnel.setPersonnelId(8);
+		activationByPersonnel.setPersonnelId(0);
 		activationByPersonnelDao.save(activationByPersonnel);
 		
 		

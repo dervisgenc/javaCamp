@@ -18,12 +18,12 @@ import kodlamaio.hrms.entities.concretes.Employer;
 @RestController
 @RequestMapping("/api/employere")
 @CrossOrigin
-public class EmployerController {
+public class EmployersController {
 	
 	private EmployerService employerService;
 	
 	@Autowired
-	public EmployerController(EmployerService employereService) {
+	public EmployersController(EmployerService employereService) {
 		super();
 		this.employerService = employereService;
 	}
@@ -34,7 +34,7 @@ public class EmployerController {
 	}
 	
 	@PostMapping("/add")
-	Result add(@RequestBody Employer employere,String passwordRepeat) {
-		return this.employerService.add(employere,passwordRepeat);
+	Result add(@RequestBody Employer employer,String passwordRepeat) {
+		return this.employerService.add(employer,passwordRepeat);
 	}
 }

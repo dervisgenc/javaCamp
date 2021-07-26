@@ -1,10 +1,13 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -14,14 +17,15 @@ import kodlamaio.hrms.core.entities.concretes.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-@PrimaryKeyJoinColumn(name="user_id",referencedColumnName = "id")
-@Data
+
 @Entity
 @Table(name="employers")
+@PrimaryKeyJoinColumn(name="user_id",referencedColumnName = "id")
+@Data
 @NoArgsConstructor
 
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","JobAdvertisement"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
 
 
 public class Employer extends User {
@@ -41,8 +45,10 @@ public class Employer extends User {
 	private String telNumber;
 	
 	@Column(name = "is_actived")
-
     private boolean isActive;
+	
+	@OneToMany(mappedBy= "employer")
+	private List<JobAdvertisement> jobAdvertisements; 
 
 	public Employer(int id, String email, String password, int id2, String website, String companyName,
 			String telNumber, boolean isActive) {

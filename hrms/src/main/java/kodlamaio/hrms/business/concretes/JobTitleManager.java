@@ -39,6 +39,7 @@ public class JobTitleManager implements JobTitleService {
 		if(jobTitleDao.findByName(jobTitle.getName()) != null) {
 			return new  ErrorResult("İş pozisyonu mevcut!!");
 		}
+		this.jobTitleDao.save(jobTitle);
 		return new SuccessResult("İş pozisyonu eklendi");
 	}
 
